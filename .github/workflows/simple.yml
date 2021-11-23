@@ -13,6 +13,7 @@ jobs:
         run: |
           node -v
           npm -v
+
       - name: python command
         shell: python
         run: |
@@ -26,6 +27,7 @@ jobs:
     steps:
       - name: powershell command
         run: Get-Location
+
       - name: bash command
         shell: bash
         run: pwd
