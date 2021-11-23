@@ -18,3 +18,13 @@ jobs:
         run: |
           import platform
           print(platform.processor())
+
+  run-windows-command:
+    environment: test # <--- here
+    runs-on: windows-latest
+    steps:
+      - name: powershell command
+        run: Get-Location
+      - name: bash command
+        shell: bash
+        run: pwd
