@@ -13,7 +13,7 @@ jobs:
           echo $GITHUB_SHA
           echo $GITHUB_REPOSITORY
           echo $GITHUB_WORKSPACE
-          echo "{{ github.token }}"
+          echo "${{ github.token }}"
           # git clone git@github:$GIT_REPOSITORY
           # git checkout $GITHUB_SHA
 
@@ -33,4 +33,4 @@ jobs:
           who-to-greet: Tim
 
       - name: Log greeting time
-        run: echo "{{ steps.greet.outputs.time }}"
+        run: echo "${{ steps.greet.outputs.time }}"
