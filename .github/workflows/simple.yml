@@ -22,6 +22,7 @@ jobs:
   run-windows-command:
     environment: test # <--- here
     runs-on: windows-latest
+    needs: ["run-shell-command"]
     steps:
       - name: powershell command
         run: Get-Location
