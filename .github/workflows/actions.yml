@@ -10,6 +10,12 @@ jobs:
         run: |
           pwd
           ls -a
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          echo "{{ github.token }}"
+          # git clone git@github:$GIT_REPOSITORY
+          # git checkout $GITHUB_SHA
 
       - name: checkout
         uses: actions/checkout@v1
@@ -18,6 +24,7 @@ jobs:
         run: |
           pwd
           ls -a
+          env
 
       - name: Simple JS action
         id: greet
