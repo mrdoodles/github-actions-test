@@ -9,7 +9,9 @@ jobs:
     steps:
       - name: echo a string
         run: echo "Hello Tim"
+        continue-on-error: true
       - name: multiline script
+        # if: failure() # continue-on-error allows all to continue
         run: |
           node -v
           npm -v
