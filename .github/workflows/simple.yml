@@ -6,10 +6,11 @@ jobs:
   run-shell-command:
     environment: test # <--- here
     runs-on: ubuntu-latest
+    timeout-minutes: 360
     steps:
       - name: echo a string
         run: echo "Hello Tim"
-        continue-on-error: true
+        # continue-on-error: true
       - name: multiline script
         # if: failure() # continue-on-error allows all to continue
         run: |
