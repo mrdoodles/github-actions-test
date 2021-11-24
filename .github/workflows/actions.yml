@@ -1,14 +1,31 @@
 name: Actions Workflow
 
 on:
-  repository_dispatch:
-    types: [build]
+  # repository_dispatch:
+  #   types: [build]
 
   # schedule:
   #   - cron: "0/5 * * * *"
   #   - cron: "0/6 * * * *"
-  # push:
+  push:
+    branches: # to run on all branches except tle listed we can use branches-ignore:
+      # branches and branches-ignore are either/or
+      - main
+      - "feature/*" # matches feature/featA, feature/featB but not feature/feat/new
+      - "feature/**" # matches feature/feat/new as well
+      - "!feature/featC" # This branch will not be included as the name starts with !
+      # Individually ignored branches have to be placed after theincluded branches.
+      # Possibly you can use "feature/feat[ABC]" to filter feature/featA, feature/featB and feature/featC.
+    tags:
+      - "v1.*" # Tags work the same as branches and can use tags-ignore.
+    # paths:
+    #   - "**.js" # Also individual paths can be targeted and ignored paths-ignore.
+    #   - "!filename.js"
+    paths-ignore:
+      - "docs/**"
   pull_request:
+    branches:
+      - main
     types: [opened, assigned, closed, reopened]
 
 jobs:
