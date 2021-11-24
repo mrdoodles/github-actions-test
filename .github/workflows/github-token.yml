@@ -3,6 +3,30 @@ name: Github token
 on: [push]
 
 jobs:
+  push_random:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: push a random file
+        run: |
+          pwd
+          ls -a
+          git init
+          git remote add origin "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
+          git config --global user.email "oberibot@oberiworks.com"
+          git config --global user.name "Oberi Bot"
+          git fetch
+          git checkout main
+          git branch --set-upstream-to=origin/main
+          git pull
+          ls -a
+          echo $PANDOM >> random.txt
+          ls -a
+          git add .
+          git commit -m"Random number file"
+          git push
+
   create_issue:
     runs-on: ubuntu-latest
     permissions:
