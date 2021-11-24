@@ -3,6 +3,23 @@ name: Github token
 on: [push]
 
 jobs:
+  decrypt:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: write
+    steps:
+      - name: checkout
+        uses: actions/checkout@v1
+
+      - name: decrypt file
+        env:
+          PASSPHRASE: ${{ secrets.PASSPHRASE }}
+        run: gpg --quiet --batch --yes --decrypt --passphrase="PASSPHRASE" --output $HOME/secret.json $HOME/secret.json.gpg
+
+      - name: print file contents
+        run: cat $HOME/secret.json
+
   push_random:
     runs-on: ubuntu-latest
     permissions:
