@@ -1,6 +1,8 @@
 name: Github token
 
 on: [push]
+  branches:
+    - temp
 
 jobs:
   push_random:
