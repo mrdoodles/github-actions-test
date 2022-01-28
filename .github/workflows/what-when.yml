@@ -1,0 +1,19 @@
+name: WhatWhen
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: is pull request
+        if: github.event_name == 'pull_request'
+        run: echo "Pull Request on ${{ github.head_ref }}"
+
+      - name: is pull request target
+        if: github.event_name == 'pull_request_target'
+        run: echo "Pull Request Target on ${{ github.head_ref }}"
+      
+      - name: is push
+        if: github.event_name == 'push'
+        run: echo "Push on ${{ github.head_ref }}"
+
