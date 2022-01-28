@@ -18,13 +18,15 @@ jobs:
     steps:
       - name: is pull request
         if: github.event_name == 'pull_request'
-        run: echo "Pull Request on ${{ github.head_ref }}"
+        run: echo "Pull Request from - ${{ github.head_ref }}"
+        run: echo "Pull request to   - ${{ github.base_ref }}"
 
       - name: is pull request target
         if: github.event_name == 'pull_request_target'
-        run: echo "Pull Request Target on ${{ github.head_ref }}"
+        run: echo "Pull Request Target from - ${{ github.head_ref }}"
+        run: echo "Pull request Target to   - ${{ github.base_ref }}"
       
       - name: is push
         if: github.event_name == 'push'
-        run: echo "Push on ${{ github.head_ref }}"
+        run: echo "Push on ${{ github.ref }}"
 
