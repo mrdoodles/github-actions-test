@@ -23,7 +23,7 @@ jobs:
       - name: payload
         run: echo "${{ github.event.client_payload.env }}"
     
-      - name: Dump context:
+      - name: Dump github context
         run: echo '${{ toJSON(github) }}'
       - name: Dump job context
         run: echo '${{ toJSON(job) }}'
